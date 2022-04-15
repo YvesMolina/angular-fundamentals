@@ -1,21 +1,29 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { NotFoundComponent } from './errors/not-found.component';
 import { EventsAppComponent } from './events-app.component';
+import { CreateEventComponent } from './events/create-event/create-event.component';
+import { EventDetailsComponent } from './events/event-details/event-details.component';
+import { EventRouteActivator } from './events/event-details/event-route-activator.service';
 import { EventThumbnailComponent } from './events/event-thumbnail.component';
 import { EventsListComponent } from './events/events-list.component';
 import { NavbarComponent } from './nav/navbar.component';
+import { appRoutes } from './routes';
+import { AuthService } from './services/auth/auth.service';
+import { EventsListResolverService } from './services/event-list-resolver/events-list-resolver.service';
 import { EventService } from './services/event/event.service';
 import { ToastrService } from './shared/toastr.service';
-import { EventDetailsComponent } from './events/event-details/event-details.component';
-import { RouterModule } from '@angular/router';
-import { appRoutes } from './routes';
-import { CreateEventComponent } from './events/create-event/create-event.component';
-import { NotFoundComponent } from './errors/not-found.component';
-import { EventRouteActivator } from './events/event-details/event-route-activator.service';
-import { EventsListResolverService } from './services/event-list-resolver/events-list-resolver.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreateSessionComponent } from './events/event-details/create-session.component';
 
 @NgModule({
-  imports: [BrowserModule, RouterModule.forRoot(appRoutes)],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(appRoutes),
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   declarations: [
     EventsAppComponent,
     EventsListComponent,
@@ -24,6 +32,7 @@ import { EventsListResolverService } from './services/event-list-resolver/events
     EventDetailsComponent,
     CreateEventComponent,
     NotFoundComponent,
+    CreateSessionComponent,
   ],
   providers: [
     EventService,
@@ -34,6 +43,7 @@ import { EventsListResolverService } from './services/event-list-resolver/events
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState,
     },
+    AuthService,
   ],
   bootstrap: [EventsAppComponent],
 })

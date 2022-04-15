@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { IEvent } from '../shared/models/event.model';
 
 @Component({
   selector: 'event-thumbnail',
