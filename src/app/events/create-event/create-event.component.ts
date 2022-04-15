@@ -4,16 +4,16 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-create-event',
   templateUrl: './create-event.component.html',
-  styleUrls: ['./create-event.component.css']
+  styleUrls: ['./create-event.component.css'],
 })
 export class CreateEventComponent implements OnInit {
+  isDirty: boolean = true;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  cancel(){
-    this.router.navigate(['/events'])
+  cancel() {
+    this.router.navigate(['/events']);
   }
 }
