@@ -16,6 +16,7 @@ import { EventService } from './services/event/event.service';
 import { ToastrService } from './shared/toastr.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateSessionComponent } from './events/event-details/create-session.component';
+import { SessionListComponent } from './events/event-details/session-list.component';
 
 @NgModule({
   imports: [
@@ -33,6 +34,7 @@ import { CreateSessionComponent } from './events/event-details/create-session.co
     CreateEventComponent,
     NotFoundComponent,
     CreateSessionComponent,
+    SessionListComponent,
   ],
   providers: [
     EventService,
