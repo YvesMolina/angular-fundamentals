@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ISession } from 'src/app/shared/models/event.model';
+import { restrictedWords } from 'src/app/shared/validators/restricted-words.validator';
 
 @Component({
   selector: 'app-create-session',
@@ -14,6 +15,7 @@ export class CreateSessionComponent implements OnInit {
   duration: FormControl;
   level: FormControl;
   abstract: FormControl;
+  invalidForm = false;
   constructor() {}
 
   ngOnInit(): void {
@@ -28,7 +30,7 @@ export class CreateSessionComponent implements OnInit {
     this.abstract = new FormControl('', [
       Validators.required,
       Validators.maxLength(400),
-      restrictedWords(['foo', 'bar']),
+      restrictedWords(['foo', 'bar', 'athon']),
     ]);
 
     this.newSessionForm = new FormGroup({
@@ -41,15 +43,19 @@ export class CreateSessionComponent implements OnInit {
   }
 
   saveSession(formValues: any) {
-    let session: ISession = {
-      id: 0,
-      name: formValues.name,
-      duration: +formValues.duration,
-      level: formValues.level,
-      presenter: formValues.presenter,
-      abstract: formValues.abstract,
-      voters: []
+    if (this.newSessionForm.valid) {
+      let session: ISession = {
+        id: 0,
+        name: formValues.name,
+        duration: +formValues.duration,
+        level: formValues.level,
+        presenter: formValues.presenter,
+        abstract: formValues.abstract,
+        voters: [],
+      };
+      console.log(session);
+    } else {
+      this.invalidForm = true;
+    }
   }
-  }
-
 }
