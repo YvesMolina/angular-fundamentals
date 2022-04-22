@@ -13,13 +13,14 @@ import { appRoutes } from './routes';
 import { AuthService } from './services/auth/auth.service';
 import { EventsListResolverService } from './services/event-list-resolver/events-list-resolver.service';
 import { EventService } from './services/event/event.service';
-import { ToastrService } from './shared/toastr.service';
+import { TOASTR_TOKEN, Toastr } from './shared/toastr.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateSessionComponent } from './events/event-details/create-session.component';
 import { SessionListComponent } from './events/event-details/session-list.component';
 import { CollapsibleWellComponent } from './shared/collapsible-well.component';
 import { DurationPipe } from './shared/pipes/duration.pipe';
 
+declare let toastr: Toastr;
 @NgModule({
   imports: [
     BrowserModule,
@@ -42,7 +43,7 @@ import { DurationPipe } from './shared/pipes/duration.pipe';
   ],
   providers: [
     EventService,
-    ToastrService,
+    { provide: TOASTR_TOKEN, useValue: toastr },
     EventRouteActivator,
     EventsListResolverService,
     {

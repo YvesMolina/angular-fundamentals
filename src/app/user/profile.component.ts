@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
+import { TOASTR_TOKEN, Toastr } from '../shared/toastr.service';
 
 @Component({
   selector: 'app-profile',
@@ -13,20 +14,22 @@ export class ProfileComponent implements OnInit {
   firstName: FormControl;
   lastName: FormControl;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    @Inject(TOASTR_TOKEN) private toastr: Toastr
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
   }
 
   initForm() {
-    this.firstName = new FormControl(
-      this.authService.currentUser.firstName,
-      [Validators.required, Validators.pattern('[a-zA-Z].*')]
-    );
-    this.lastName = new FormControl(
-      this.authService.currentUser.lastName,
-    );
+    this.firstName = new FormControl(this.authService.currentUser.firstName, [
+      Validators.required,
+      Validators.pattern('[a-zA-Z].*'),
+    ]);
+    this.lastName = new FormControl(this.authService.currentUser.lastName);
     this.profileForm = new FormGroup({
       firstName: this.firstName,
       lastName: this.lastName,
@@ -36,7 +39,7 @@ export class ProfileComponent implements OnInit {
   saveProfile(formValues: any) {
     if (this.profileForm.valid) {
       this.authService.updateCurrentUser(formValues);
-      this.router.navigate(['events']);
+      this.toastr.success('Profile Saved !');
     }
   }
 
@@ -45,10 +48,10 @@ export class ProfileComponent implements OnInit {
   }
 
   validateFirstName() {
-    return this.firstName.valid || this.firstName.untouched
+    return this.firstName.valid || this.firstName.untouched;
   }
 
   validateLastName() {
-    return this.lastName.valid || this.lastName.untouched
+    return this.lastName.valid || this.lastName.untouched;
   }
 }

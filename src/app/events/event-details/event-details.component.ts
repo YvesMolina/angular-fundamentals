@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { EventService } from 'src/app/services/event/event.service';
 import { ActivatedRoute } from '@angular/router';
 import { IEvent, ISession } from 'src/app/shared/models/event.model';
-import { ToastrService } from 'src/app/shared/toastr.service';
 
 @Component({
   selector: 'app-event-details',
@@ -19,7 +18,6 @@ export class EventDetailsComponent implements OnInit {
   constructor(
     private eventService: EventService,
     private route: ActivatedRoute,
-    private toast: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -40,6 +38,5 @@ export class EventDetailsComponent implements OnInit {
     this.event.sessions.push(session);
     this.eventService.updateEvent(this.event);
     this.switchSessionsDisplay();
-    this.toast.success('Event added successfully !');
   }
 }
