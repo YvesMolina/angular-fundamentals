@@ -1,6 +1,7 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
+  "expermientalDecorators": true,
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
@@ -22,12 +23,15 @@
     "lib": [
       "es2020",
       "dom"
-    ]
+    ],
+    "suppressImplicitAnyIndexErrors": true,
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "strictTemplates": true,
+    "suppressImplicitAnyIndexErrors": true,
   },
+  "suppressImplicitAnyIndexErrors": true,
 }

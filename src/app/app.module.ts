@@ -14,13 +14,18 @@ import { AuthService } from './services/auth/auth.service';
 import { EventsListResolverService } from './services/event-list-resolver/events-list-resolver.service';
 import { EventService } from './services/event/event.service';
 import { TOASTR_TOKEN, Toastr } from './shared/toastr.service';
+import { JQ_TOKEN } from './shared/j-query.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateSessionComponent } from './events/event-details/create-session.component';
 import { SessionListComponent } from './events/event-details/session-list.component';
 import { CollapsibleWellComponent } from './shared/collapsible-well.component';
 import { DurationPipe } from './shared/pipes/duration.pipe';
+import { SimpleModalComponent } from './shared/simple-modal.component';
+import { ModalTriggerDirective } from './shared/modal-trigger.directive';
 
-declare let toastr: Toastr;
+let toastr: Toastr = window['toastr'];
+let jQuery = window['$'];
+// declare let jQuery = jQuery;
 @NgModule({
   imports: [
     BrowserModule,
@@ -40,10 +45,13 @@ declare let toastr: Toastr;
     SessionListComponent,
     CollapsibleWellComponent,
     DurationPipe,
+    SimpleModalComponent,
+    ModalTriggerDirective,
   ],
   providers: [
     EventService,
     { provide: TOASTR_TOKEN, useValue: toastr },
+    { provide: JQ_TOKEN, useValue: jQuery },
     EventRouteActivator,
     EventsListResolverService,
     {
