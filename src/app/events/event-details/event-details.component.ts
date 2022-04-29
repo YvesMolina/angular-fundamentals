@@ -17,18 +17,19 @@ export class EventDetailsComponent implements OnInit {
 
   constructor(
     private eventService: EventService,
-    private route: ActivatedRoute,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.navigateToEvent();
   }
 
-  navigateToEvent(){
-    this.route.params.forEach((params: Params) => {
-      this.event = this.eventService.getEvent(+params['id']);
+  navigateToEvent() {
+    this.route.data.forEach((data) => {
+      this.event = data['event'];
+      console.log(data)
       this.addMode = false;
-    })
+    });
   }
 
   switchSessionsDisplay() {
@@ -43,7 +44,7 @@ export class EventDetailsComponent implements OnInit {
     );
     session.id = nextId + 1;
     this.event.sessions.push(session);
-    this.eventService.updateEvent(this.event);
+    this.eventService.saveEvent(this.event).subscribe();
     this.switchSessionsDisplay();
   }
 }

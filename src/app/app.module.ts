@@ -5,7 +5,6 @@ import { NotFoundComponent } from './errors/not-found.component';
 import { EventsAppComponent } from './events-app.component';
 import { CreateEventComponent } from './events/create-event/create-event.component';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
-import { EventRouteActivator } from './events/event-details/event-route-activator.service';
 import { EventThumbnailComponent } from './events/event-thumbnail.component';
 import { EventsListComponent } from './events/events-list.component';
 import { NavbarComponent } from './nav/navbar.component';
@@ -24,6 +23,7 @@ import { SimpleModalComponent } from './shared/simple-modal.component';
 import { ModalTriggerDirective } from './shared/modal-trigger.directive';
 import { UpvoteComponent } from './events/event-details/upvote.component';
 import { LocationValidatorDirective } from './events/create-event/location-validator.directive';
+import { HttpClientModule } from '@angular/common/http';
 
 let toastr: Toastr = window['toastr'];
 let jQuery = window['$'];
@@ -34,6 +34,7 @@ let jQuery = window['$'];
     RouterModule.forRoot(appRoutes),
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   declarations: [
     EventsAppComponent,
@@ -56,7 +57,6 @@ let jQuery = window['$'];
     EventService,
     { provide: TOASTR_TOKEN, useValue: toastr },
     { provide: JQ_TOKEN, useValue: jQuery },
-    EventRouteActivator,
     EventsListResolverService,
     {
       provide: 'canDeactivateCreateEvent',

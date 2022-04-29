@@ -3,9 +3,9 @@ import { NotFoundComponent } from './errors/not-found.component';
 import { CreateEventComponent } from './events/create-event/create-event.component';
 import { CreateSessionComponent } from './events/event-details/create-session.component';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
-import { EventRouteActivator } from './events/event-details/event-route-activator.service';
 import { EventsListComponent } from './events/events-list.component';
 import { EventsListResolverService } from './services/event-list-resolver/events-list-resolver.service';
+import { EventResolverService } from './services/event/event-resolver.service';
 
 export const appRoutes = [
   {
@@ -21,7 +21,7 @@ export const appRoutes = [
   {
     path: 'events/:id',
     component: EventDetailsComponent,
-    canActivate: [EventRouteActivator],
+    resolve: { event: EventResolverService } 
   },
   {
     path: 'events/session/new',
