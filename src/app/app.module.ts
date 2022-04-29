@@ -22,6 +22,8 @@ import { CollapsibleWellComponent } from './shared/collapsible-well.component';
 import { DurationPipe } from './shared/pipes/duration.pipe';
 import { SimpleModalComponent } from './shared/simple-modal.component';
 import { ModalTriggerDirective } from './shared/modal-trigger.directive';
+import { UpvoteComponent } from './events/event-details/upvote.component';
+import { LocationValidatorDirective } from './events/create-event/location-validator.directive';
 
 let toastr: Toastr = window['toastr'];
 let jQuery = window['$'];
@@ -47,6 +49,8 @@ let jQuery = window['$'];
     DurationPipe,
     SimpleModalComponent,
     ModalTriggerDirective,
+    UpvoteComponent,
+    LocationValidatorDirective,
   ],
   providers: [
     EventService,
