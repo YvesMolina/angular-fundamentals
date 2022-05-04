@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
 import { EventService } from '../services/event/event.service';
 import { IEvent, ISession } from '../shared/models/event.model';
-import { IUser } from '../shared/models/user.model';
 
 @Component({
   selector: 'app-navbar',
@@ -11,7 +10,7 @@ import { IUser } from '../shared/models/user.model';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  searchTerm: string = '';
+  searchTerm = '';
   foundSessions: ISession[];
   events: IEvent[];
 

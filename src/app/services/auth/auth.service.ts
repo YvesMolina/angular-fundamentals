@@ -9,13 +9,13 @@ import { IUser } from '../../shared/models/user.model';
 })
 export class AuthService {
   currentUser: IUser;
-  loggedIn: boolean = false;
+  loggedIn = false;
 
   constructor(private http: HttpClient) {}
 
   loginUser(userName: string, password: string) {
-    let loginInfo = { username: userName, password: password };
-    let options = {
+    const loginInfo = { username: userName, password: password };
+    const options = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
 
@@ -28,14 +28,14 @@ export class AuthService {
         })
       )
       .pipe(
-        catchError((err) => {
+        catchError(() => {
           return of(false);
         })
       );
   }
   logoutUser() {
     this.loggedIn = false;
-    let options = {
+    const options = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
     return this.http.post('/api/logout', {}, options);
@@ -58,11 +58,12 @@ export class AuthService {
       .subscribe();
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   updateCurrentUser(formValues: any) {
     this.currentUser.firstName = formValues.firstName;
     this.currentUser.lastName = formValues.lastName;
 
-    let options = {
+    const options = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
 

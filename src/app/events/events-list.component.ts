@@ -7,7 +7,7 @@ import { IEvent } from '../shared/models/event.model';
   templateUrl: './events-list.component.html',
 })
 export class EventsListComponent implements OnInit {
-  events: any;
+  events: IEvent[];
 
   ngOnInit() {
     this.getEvents();

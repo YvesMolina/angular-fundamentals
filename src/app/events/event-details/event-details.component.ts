@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from 'src/app/services/event/event.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { IEvent, ISession } from 'src/app/shared/models/event.model';
 
 @Component({
@@ -9,11 +9,11 @@ import { IEvent, ISession } from 'src/app/shared/models/event.model';
   styleUrls: ['./event-details.component.css'],
 })
 export class EventDetailsComponent implements OnInit {
-  event: any;
+  event: IEvent;
   addMode = false;
   sessionDisplay = 'Add session';
-  filterBy: string = 'all';
-  sortBy: string = 'votes';
+  filterBy = 'all';
+  sortBy = 'votes';
 
   constructor(
     private eventService: EventService,

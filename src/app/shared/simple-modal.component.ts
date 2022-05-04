@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild, Inject } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild, Inject } from '@angular/core';
 import { JQ_TOKEN } from './j-query.service';
 
 @Component({
@@ -6,16 +6,14 @@ import { JQ_TOKEN } from './j-query.service';
   templateUrl: './simple-modal.component.html',
   styleUrls: ['./simple-modal.component.css']
 })
-export class SimpleModalComponent implements OnInit {
+export class SimpleModalComponent {
   @Input() title: string;
   @Input() elementId: string;
   @Input() closeOnBodyClick: string;
   @ViewChild('modalContainer') containerEl: ElementRef;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor(@Inject(JQ_TOKEN) private $: any) { }
-
-  ngOnInit(): void {
-  }
 
   closeModal(){
     if(this.closeOnBodyClick.toLocaleLowerCase() === "true") {

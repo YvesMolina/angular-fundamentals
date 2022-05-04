@@ -3,7 +3,6 @@ import {
   Input,
   OnChanges,
   OnInit,
-  SimpleChanges,
 } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { VoterService } from 'src/app/services/voter.service';

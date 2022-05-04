@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FormControl } from '@angular/forms';
 
 export function restrictedWords(words: string[]): any {
     return (control: FormControl): { [key: string]: any } | null => {
       if (!words) return null;
-      var invalidWords = words.map((w: any) =>
+      const invalidWords = words.map((w: any) =>
         control.value.includes(w) ? w : null
       ).filter((w: string) => w != null);
 

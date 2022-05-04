@@ -1,8 +1,9 @@
 import { VoterService } from './voter.service';
 import { ISession } from '../shared/models/event.model';
-import { Observable, of } from 'rxjs';
+import { of } from 'rxjs';
 
 describe('VoterService', () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let voterService: VoterService, mockHttp: any;
   beforeEach(() => {
     mockHttp = jasmine.createSpyObj('mockHttp', ['delete', 'post']);
@@ -11,7 +12,7 @@ describe('VoterService', () => {
 
   describe('deleteVoter', () => {
     it('should remove the voter from the list of voters', () => {
-      let session = { id: 6, voters: ['joe', 'jack'] };
+      const session = { id: 6, voters: ['joe', 'jack'] };
       mockHttp.delete.and.returnValue(of(false));
 
       voterService.deleteVoter(3, <ISession>session, 'joe');
@@ -21,7 +22,7 @@ describe('VoterService', () => {
     });
 
     it('should call http.delete with the right URL', () => {
-      let session = { id: 6, voters: ['joe', 'jack'] };
+      const session = { id: 6, voters: ['joe', 'jack'] };
       mockHttp.delete.and.returnValue(of(false));
 
       voterService.deleteVoter(3, <ISession>session, 'joe');
@@ -34,7 +35,7 @@ describe('VoterService', () => {
 
   describe('addVoter', () => {
     it('should add the voter to the list of voters', () => {
-      let session = { id: 4, voters: ['joe', 'jack'] };
+      const session = { id: 4, voters: ['joe', 'jack'] };
       mockHttp.post.and.returnValue(of(false));
 
       voterService.addVoter(57, <ISession>session, 'jill');

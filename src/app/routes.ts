@@ -1,4 +1,3 @@
-import { Routes } from '@angular/router';
 import { NotFoundComponent } from './errors/not-found.component';
 import { CreateEventComponent } from './events/create-event/create-event.component';
 import { CreateSessionComponent } from './events/event-details/create-session.component';

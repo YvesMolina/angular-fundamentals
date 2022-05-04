@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable, EventEmitter } from '@angular/core';
-import { catchError, Observable, of, Subject } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { catchError, Observable, of } from 'rxjs';
 import { IEvent, ISession } from 'src/app/shared/models/event.model';
 
 @Injectable({
@@ -22,7 +22,7 @@ export class EventService {
   }
 
   saveEvent(event: IEvent) {
-    let options = {
+    const options = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
     return this.http
@@ -36,7 +36,9 @@ export class EventService {
       .pipe(catchError(this.handleError<ISession[]>('searchSessions', [])));
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   handleError<T>(operation = 'operation', result?: T) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return (error: any): Observable<T> => {
       console.error(error);
       return of(result as T);

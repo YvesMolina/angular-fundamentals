@@ -36,11 +36,12 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   saveProfile(formValues: any) {
     if (this.profileForm.valid) {
       this.authService
         .updateCurrentUser(formValues)
-        .subscribe((res) => this.toastr.success('Profile Saved !'));
+        .subscribe(() => this.toastr.success('Profile Saved !'));
     }
   }
 
@@ -49,7 +50,7 @@ export class ProfileComponent implements OnInit {
   }
 
   logout() {    
-    this.authService.logoutUser().subscribe((res) => {
+    this.authService.logoutUser().subscribe(() => {
       this.router.navigate(['/user/login']);
     });
   }

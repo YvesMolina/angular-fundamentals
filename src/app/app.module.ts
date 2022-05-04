@@ -25,8 +25,8 @@ import { UpvoteComponent } from './events/event-details/upvote.component';
 import { LocationValidatorDirective } from './events/create-event/location-validator.directive';
 import { HttpClientModule } from '@angular/common/http';
 
-let toastr: Toastr = window['toastr'];
-let jQuery = window['$'];
+const toastr: Toastr = window['toastr'];
+const jQuery = window['$'];
 // declare let jQuery = jQuery;
 @NgModule({
   imports: [

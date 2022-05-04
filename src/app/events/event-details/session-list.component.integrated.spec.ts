@@ -7,8 +7,8 @@ import { VoterService } from 'src/app/services/voter.service';
 import { DurationPipe } from 'src/app/shared/pipes/duration.pipe';
 
 describe('SessionListComponent', () => {
-  let mockAuthService: any,
-    mockVoterService: any,
+  let mockAuthService: unknown,
+    mockVoterService: unknown,
     fixture: ComponentFixture<SessionListComponent>,
     component: SessionListComponent,
     element: HTMLElement,

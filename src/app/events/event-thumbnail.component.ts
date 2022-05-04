@@ -7,5 +7,5 @@ import { IEvent } from '../shared/models/event.model';
   styleUrls: ["./event-thumbnail.component.css"]
 })
 export class EventThumbnailComponent {
-  @Input() event: any;
+  @Input() event: IEvent;
 }

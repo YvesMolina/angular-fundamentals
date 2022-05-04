@@ -84,10 +84,10 @@
 
   <session-list
     *ngIf="!addMode"
-    [eventId]="event?.id"
+    [eventId]="event.id"
     [filterBy]="filterBy"
     [sortBy]="sortBy"
-    [sessions]="event?.sessions"
+    [sessions]="event.sessions"
   ></session-list>
 
   <create-session

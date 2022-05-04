@@ -12,7 +12,7 @@ export class VoterService {
   addVoter(eventId: number, session: ISession, voterName: string) {
     session.voters.push(voterName);
 
-    let options = {
+    const options = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
     const url = `/api/events/${eventId}/sessions/${session.id}/voters/${voterName}`;
@@ -36,8 +36,9 @@ export class VoterService {
     return session.voters.some((voter) => voter === voterName);
   }
 
-  handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  handleError<T>(_operation = 'operation', result?: T) {
+    return (error: unknown): Observable<T> => {
       console.error(error);
       return of(result as T);
     };

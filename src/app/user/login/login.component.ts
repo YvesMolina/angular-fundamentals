@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
@@ -7,16 +7,15 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent{
   userName: string;
   password: string;
   invalidForm: boolean;
-  loginInvalid: boolean = false;
+  loginInvalid = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {}
-
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   login(formValues: any) {
     if(formValues.userName && formValues.password){
       this.authService.loginUser(formValues.userName, formValues.password).subscribe(res => {

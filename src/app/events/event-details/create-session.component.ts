@@ -19,7 +19,6 @@ export class CreateSessionComponent implements OnInit {
   level: FormControl;
   abstract: FormControl;
   invalidForm = false;
-  constructor() {}
 
   ngOnInit(): void {
     this.initForm();
@@ -45,9 +44,10 @@ export class CreateSessionComponent implements OnInit {
     });
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   saveSession(formValues: any) {
     if (this.newSessionForm.valid) {
-      let session: ISession = {
+      const session: ISession = {
         id: 0,
         name: formValues.name,
         duration: +formValues.duration,

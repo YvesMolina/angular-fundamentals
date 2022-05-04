@@ -1,12 +1,11 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { ISession } from 'src/app/shared/models/event.model';
 
 import { SessionListComponent } from './session-list.component';
 
 describe('SessionListComponent', () => {
   let component: SessionListComponent;
-  let fixture: ComponentFixture<SessionListComponent>;
-  let mockAuthService: any, mockVoterService: any;
+  let mockAuthService: never, mockVoterService: never;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
